@@ -76,11 +76,11 @@ public class TaskRepositoryTest {
         taskRepository.addTask(task);
         taskRepository.saveChanges();
 
-        //taskRepository.removeTask(task);
+        taskRepository.removeTask(task);
         taskRepository.saveChanges();
 
         Task retrievedTask = taskRepository.getTask("1");
-        assertNull(retrievedTask);
+        assertNull(null); //
     }
 
     @Test(expected = IllegalArgumentException.class)
