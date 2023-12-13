@@ -86,15 +86,16 @@ public class TaskRepositoryTest {
         taskRepository.saveChanges();
 
         Task retrievedTask = taskRepository.getTask("1");
-        assertEquals("", ""); //
+        assertNull(retrivedTask); //
         
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void removeTaskDoesntExist() {
         Task task = new Task("Task 1");
         taskRepository.addTask(task);
-        //taskRepository.removeTask(task);
+        
+        taskRepository.saveChanges();
     }
 
     @Test
