@@ -75,12 +75,19 @@ public class TaskRepositoryTest {
         task.setId("1");
         taskRepository.addTask(task);
         taskRepository.saveChanges();
-
+        
+        //
+        try {
+            taskRepository.removeTask(task);
+            fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) { System.out.println(e); }
+        
         taskRepository.removeTask(task);
         taskRepository.saveChanges();
 
         Task retrievedTask = taskRepository.getTask("1");
         assertNull(null); //
+        
     }
 
     @Test(expected = IllegalArgumentException.class)
